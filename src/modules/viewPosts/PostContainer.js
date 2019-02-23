@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import PostView from './PostView';
 import CommentForm from './CommentForm';
+import CommentList from './CommentsList';
 
 import operation from '../../redux/postOperation';
 import * as API from '../../services/api';
@@ -45,15 +46,18 @@ class PostPage extends Component {
       body: commentText,
     }).then(status => {
       if (status !== 201) return;
+      this.setState({ ...INITIAL_STATE });
       getPostById(id);
     });
   };
 
   render() {
-    const { commentText, post } = this.props;
+    const { post, commnets } = this.props;
+    const { commentText } = this.state;
     return (
       <>
-        <PostView item={post} />
+        <PostView item={post} commentblock={commnets} />
+        <CommentList comments={post.comments} />
         <CommentForm
           handleChange={this.handleChange}
           addCommentToPost={this.addCommentToPost}

@@ -17,10 +17,12 @@ const fetchLatestPosts = latestPosts => ({
   payload: latestPosts,
 });
 
-const fetchPostById = postById => ({
-  type: types.FETCH_REQUEST_POSTS_BY_ID,
-  payload: postById,
-});
+const fetchPostById = postById => {
+  return {
+    type: types.FETCH_REQUEST_POSTS_BY_ID,
+    payload: postById,
+  };
+};
 
 export default {
   fetchRequestStart,

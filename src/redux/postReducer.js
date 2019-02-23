@@ -12,7 +12,7 @@ export function latestPostsReducer(state = [], { type, payload }) {
 export function postByIdReducer(state = {}, { type, payload }) {
   switch (type) {
     case types.FETCH_REQUEST_POSTS_BY_ID:
-      return payload;
+return payload;
     default:
       return state;
   }
